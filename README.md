@@ -45,4 +45,4 @@ https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Y5DQB9F8AJB
 - 4.2.0 : Moodle 4.2 & PHP 8.1 version
 - 4.3.0 : Moodle
 - 4.4.0 : Moodle
-- 4.5.9 : Moodle 4.5 & PHP 8.1 version
+- 4.5.0 : Moodle 4.5 & PHP 8.1 version
