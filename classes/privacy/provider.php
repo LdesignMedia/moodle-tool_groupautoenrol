@@ -24,7 +24,7 @@
  * @author    Luuk Verhoeven
  **/
 
-namespace local_commander\privacy;
+namespace tool_groupautoenrol\privacy;
 
 /**
  * Class provider
