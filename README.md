@@ -36,7 +36,6 @@ Note : this link appears even if the plugin is not enabled for the course
 
 From Moodle 3.9 onwards this plugin will be maintained by Gemma Lesterhuis, Lesterhuis Training & Consultancy - https://ltnc.nl/
 Donations for continuous support are welcome.
-https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Y5DQB9F8AJBKJ&source=url
 
 # Version history :
 - 1.1 : stable version not working (bug)
