@@ -34,9 +34,6 @@ Note : this link appears even if the plugin is not enabled for the course
 * @author     Pascal M - https://github.com/pascal-my
 * @author     Luuk Verhoeven - https://github.com/luukverhoeven
 
-From Moodle 3.9 onwards this plugin will be maintained by Gemma Lesterhuis, Lesterhuis Training & Consultancy - https://ltnc.nl/
-Donations for continuous support are welcome.
-
 # Version history :
 - 1.1 : stable version not working (bug)
 - 1.1.1 : stable version working as local plugin for Moodle 2.x (see https://github.com/pascal-my/moodle-local_groupautoenrol)
