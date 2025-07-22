@@ -5,7 +5,7 @@ Version 4.5.0 (stable version) for Moodle 4.5
 Plugin to randomly auto enrol students in Moodle courses groups when they are enrolled into the course (whatever the enrol methods : auto-enrol by key, cohorts sync or manual enrol)
 
 # June 4th 2025 announcement
-This Moodle addon is no longer maintained by LTNC and is up for adoption: https://moodle.org/mod/forum/discuss.php?d=468305#p1879996. If you cannot find a developer to maintain it for you, send an email to sales@ltnc.nl for information on our LTNC Moodle Addon Maintenance program.
+This Moodle addon is no longer maintained by LTNC
 
 ## Things to know :
 - The plugin uses \core\event\user_enrolment_created (user_enrolled) Moodle event
