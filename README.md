@@ -32,6 +32,7 @@ Note : this link appears even if the plugin is not enabled for the course
 # Credits
 * @copyright  2016 Pascal
 * @author     Pascal M - https://github.com/pascal-my
+* @author     LTNC - https://ltnc.nl
 * @author     Luuk Verhoeven - https://github.com/luukverhoeven
 
 # Version history :
