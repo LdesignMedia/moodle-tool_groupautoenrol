@@ -93,7 +93,7 @@ Note: The "Auto-enrol in groups" link appears even if the plugin is not enabled 
 ## Bug and Problem Support
 
 This plugin is carefully developed and thoroughly tested, but bugs and problems can always appear.
-If you discover any security related issues, please email [support@ltnc.nl](mailto:support@ltnc.nl) instead of using the
+If you discover any security related issues, please email [support@ldesignmedia.nl](mailto:support@ldesignmedia.nl) instead of using the
 issue tracker.
 
 Please bear in mind that bug and problem support is not free of charge. This is with the exception of developers that
