@@ -4,7 +4,8 @@ In brief, groupautoenrol randomly assigns students to course groups when they ar
 enrolled in a course (via any enrollment method: auto-enrol by key, cohort sync, or manual enrolment).
 
 * Author: Pascal M, [https://github.com/pascal-my](https://github.com/pascal-my)
-* Author: Luuk Verhoeven, [LTNC B.V.](https://ltnc.nl/)
+* Author: Luuk Verhoeven [LdesignMedia](https://ldesignmedia.nl/)
+* Author: Gemma Lesterhuis [LTNC B.V.](https://ltnc.nl/)
 * Min. required: Moodle 3.9
 * Supports PHP: 7.4
 
