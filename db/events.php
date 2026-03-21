@@ -28,6 +28,6 @@ defined('MOODLE_INTERNAL') || die;
 $observers = [
     [
         'eventname' => '\core\event\user_enrolment_created',
-        'callback' => 'tool_groupautoenrol_observer::user_is_enrolled',
+        'callback' => '\tool_groupautoenrol\observer::user_is_enrolled',
     ],
 ];

@@ -31,9 +31,6 @@ use moodleform;
 
 defined('MOODLE_INTERNAL') || die;
 
-global $CFG;
-require_once("$CFG->libdir/formslib.php");
-
 /**
  * Class manage_auto_group_enrol_form
  *

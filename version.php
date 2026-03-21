@@ -25,10 +25,9 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version = 2025072900;    // The (date) version of this module + 2 extra digital for daily versions.
-$plugin->requires = 2020061500;   // Requires this Moodle version - at least 3.9.
-$plugin->supported = [39, 500];
-$plugin->cron = 0;
+$plugin->version = 2026032100;
+$plugin->requires = 2024100700;
+$plugin->supported = [405, 501];
 $plugin->component = 'tool_groupautoenrol';
-$plugin->release = '5.0.0';
+$plugin->release = '5.1.0';
 $plugin->maturity = MATURITY_STABLE;

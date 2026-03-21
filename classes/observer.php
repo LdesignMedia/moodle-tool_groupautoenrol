@@ -23,7 +23,10 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace tool_groupautoenrol;
+
 use core\event\user_enrolment_created;
+use stdClass;
 
 /**
  * Event observer for tool_groupautoenrol.
@@ -33,7 +36,7 @@ use core\event\user_enrolment_created;
  * @author     Pascal M - https://github.com/pascal-my
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class tool_groupautoenrol_observer {
+class observer {
 
     /**
      * Triggered via core\event\user_enrolment_created (user_enrolled)
@@ -42,8 +45,8 @@ class tool_groupautoenrol_observer {
      * @param user_enrolment_created $event
      *
      * @return bool true if all ok
-     * @throws coding_exception
-     * @throws dml_exception
+     * @throws \coding_exception
+     * @throws \dml_exception
      */
     public static function user_is_enrolled(user_enrolment_created $event): bool {
         global $CFG, $DB;
@@ -119,20 +122,30 @@ class tool_groupautoenrol_observer {
      * @param array $groupstouse
      * @param stdClass $enroldata
      *
-     * @throws coding_exception
+     * @throws \coding_exception
      */
     private static function add_user_to_group(stdClass $groupautoenrol, array $groupstouse, stdClass $enroldata): void {
-        global $USER;
+        global $DB;
 
         if (!empty($groupautoenrol->enrol_method)) {
             // 0 = random, 1 = alpha, 2 = balanced.
+            $enrolleduser = $DB->get_record('user', ['id' => $enroldata->userid], 'id, lastname', MUST_EXIST);
+
+            if (empty($enrolleduser->lastname)) {
+                return;
+            }
+
             foreach ($groupstouse as $group) {
                 $groupname = $group->name;
 
-                if (($groupname[strlen($groupname) - 2] <= $USER->lastname[0])
-                    && ($groupname[strlen($groupname) - 1] >= $USER->lastname[0])) {
+                if (strlen($groupname) < 2) {
+                    continue;
+                }
+
+                if (($groupname[strlen($groupname) - 2] <= $enrolleduser->lastname[0])
+                    && ($groupname[strlen($groupname) - 1] >= $enrolleduser->lastname[0])) {
                     groups_add_member($group->id, $enroldata->userid);
-                    break; // Exit foreach (is it working ?).
+                    break;
                 }
             }
         } else {
