@@ -137,8 +137,10 @@ class observer {
                     continue;
                 }
 
-                if (($groupname[strlen($groupname) - 2] <= $enrolleduser->lastname[0]) &&
-                    ($groupname[strlen($groupname) - 1] >= $enrolleduser->lastname[0])) {
+                if (
+                    ($groupname[strlen($groupname) - 2] <= $enrolleduser->lastname[0]) &&
+                    ($groupname[strlen($groupname) - 1] >= $enrolleduser->lastname[0])
+                ) {
                     groups_add_member($group->id, $enroldata->userid);
                     break;
                 }
@@ -168,5 +170,4 @@ class observer {
 
         return false;
     }
-
 }
