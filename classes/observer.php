@@ -37,7 +37,6 @@ use stdClass;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class observer {
-
     /**
      * Triggered via core\event\user_enrolment_created (user_enrolled)
      * Action when user is enrolled
@@ -73,7 +72,6 @@ class observer {
         self::add_user_to_group($groupautoenrol, $groupstouse, $enroldata);
 
         return true;
-
     }
 
     /**
@@ -87,7 +85,6 @@ class observer {
     private static function get_course_groups(stdClass $groupautoenrol, user_enrolment_created $event): array {
         $groupstouse = [];
         if (!empty($groupautoenrol->use_groupslist)) {
-
             // If use_groupslist == 1, we need to check.
             // A) if the list is not empty.
             if (!empty($groupautoenrol->groupslist)) {
@@ -98,7 +95,6 @@ class observer {
                 $allgroupscourse = groups_get_all_groups($event->courseid);
 
                 foreach ($groupstemp as $group) {
-
                     if (empty($allgroupscourse[$group])) {
                         continue;
                     }
@@ -106,7 +102,6 @@ class observer {
                     $groupstouse[] = $allgroupscourse[$group];
                 }
             }
-
         } else {
             // If use_groupslist == 0, use all groups course.
             $groupstouse = groups_get_all_groups($event->courseid);
@@ -142,8 +137,8 @@ class observer {
                     continue;
                 }
 
-                if (($groupname[strlen($groupname) - 2] <= $enrolleduser->lastname[0])
-                    && ($groupname[strlen($groupname) - 1] >= $enrolleduser->lastname[0])) {
+                if (($groupname[strlen($groupname) - 2] <= $enrolleduser->lastname[0]) &&
+                    ($groupname[strlen($groupname) - 1] >= $enrolleduser->lastname[0])) {
                     groups_add_member($group->id, $enroldata->userid);
                     break;
                 }
@@ -165,7 +160,6 @@ class observer {
      * @return bool
      */
     private static function user_is_group_member(array $groupstouse, stdClass $enroldata): bool {
-
         foreach ($groupstouse as $group) {
             if (groups_is_member($group->id, $enroldata->userid)) {
                 return true;

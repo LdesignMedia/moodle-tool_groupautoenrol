@@ -49,7 +49,6 @@ $form = new \tool_groupautoenrol\form\manage_auto_group_enrol_form($url, [
 if ($form->is_cancelled()) {
     redirect(new moodle_url('/course/view.php', ['id' => $course->id]));
 } else if ($data = $form->get_data()) {
-
     if (empty($data->enable_enrol)) {
         $data->enable_enrol = 0;
     }
@@ -75,11 +74,7 @@ if ($form->is_cancelled()) {
         $DB->update_record('tool_groupautoenrol', $groupautoenrol);
     }
 
-    redirect(
-        new moodle_url('/admin/tool/groupautoenrol/manage_auto_group_enrol.php',
-            ['id' => $course->id]
-        )
-    );
+    redirect(new moodle_url('/admin/tool/groupautoenrol/manage_auto_group_enrol.php', ['id' => $course->id]));
 }
 
 echo $OUTPUT->header();

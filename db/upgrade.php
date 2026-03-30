@@ -36,7 +36,6 @@ function xmldb_tool_groupautoenrol_upgrade(int $oldversion): bool {
     $dbman = $DB->get_manager();
 
     if ($oldversion < 2024040400) {
-
         // Changing type of field groupslist on table tool_groupautoenrol to text.
         $table = new xmldb_table('tool_groupautoenrol');
         $field = new xmldb_field('groupslist', XMLDB_TYPE_TEXT, null, null, null, null, null, 'use_groupslist');

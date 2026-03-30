@@ -40,7 +40,6 @@ defined('MOODLE_INTERNAL') || die;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class manage_auto_group_enrol_form extends moodleform {
-
     /**
      * Definition
      *
@@ -68,7 +67,6 @@ class manage_auto_group_enrol_form extends moodleform {
 
         // Group(s) must be created first.
         if (empty($allgroupscourse)) {
-
             $groupurl = new moodle_url('/group/index.php', ['id' => $course->id]);
             $link = html_writer::link(
                 $groupurl,
@@ -112,7 +110,5 @@ class manage_auto_group_enrol_form extends moodleform {
         $mform->setDefault('use_groupslist', $instance->use_groupslist ?? 0);
         $mform->setDefault('groupslist', explode(",", $instance->groupslist ?? ''));
         $mform->setDefault('enable_enrol', $instance->enable_enrol ?? 0);
-
     }
-
 }
