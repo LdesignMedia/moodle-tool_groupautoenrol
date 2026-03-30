@@ -26,24 +26,21 @@
  */
 
 require_once('../../../config.php');
-defined('MOODLE_INTERNAL') || die;
 
 $id = required_param('id', PARAM_INT);
 $url = new moodle_url('/admin/tool/groupautoenrol/manage_auto_group_enrol.php', ['id' => $id]);
 $PAGE->set_url($url);
 
-// TODO we need to gracefully shutdown if course not found.
 $course = $DB->get_record('course', ['id' => $id], '*', MUST_EXIST);
 $context = context_course::instance($course->id);
 
 require_login($course);
-
-$coursecontext = context_course::instance($course->id);
-require_capability('moodle/course:update', $coursecontext);
+require_capability('moodle/course:update', $context);
 
 $PAGE->set_context($context);
 $PAGE->set_pagelayout('admin');
 $PAGE->set_heading($course->fullname);
+$PAGE->set_title(get_string('auto_group_form_page_title', 'tool_groupautoenrol'));
 
 $form = new \tool_groupautoenrol\form\manage_auto_group_enrol_form($url, [
     'course' => $course,
@@ -52,7 +49,6 @@ $form = new \tool_groupautoenrol\form\manage_auto_group_enrol_form($url, [
 if ($form->is_cancelled()) {
     redirect(new moodle_url('/course/view.php', ['id' => $course->id]));
 } else if ($data = $form->get_data()) {
-
     if (empty($data->enable_enrol)) {
         $data->enable_enrol = 0;
     }
@@ -78,11 +74,7 @@ if ($form->is_cancelled()) {
         $DB->update_record('tool_groupautoenrol', $groupautoenrol);
     }
 
-    redirect(
-        new moodle_url('/admin/tool/groupautoenrol/manage_auto_group_enrol.php',
-            ['id' => $course->id]
-        )
-    );
+    redirect(new moodle_url('/admin/tool/groupautoenrol/manage_auto_group_enrol.php', ['id' => $course->id]));
 }
 
 echo $OUTPUT->header();

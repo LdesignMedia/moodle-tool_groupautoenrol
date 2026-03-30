@@ -34,7 +34,7 @@
  */
 function tool_groupautoenrol_extend_navigation_course(navigation_node $navigation, object $course, context $context): void {
 
-    if (!($context instanceof context_course || $context instanceof context_module) && empty($context->instanceid)) {
+    if (!($context instanceof context_course) || empty($context->instanceid)) {
         return;
     }
 
