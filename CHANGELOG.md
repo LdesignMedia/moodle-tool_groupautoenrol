@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## 5.1.1 (2026062400)
+- Fix: restore `require_once($CFG->libdir/formslib.php)` in the manage form, resolving the `Class "moodleform" not found` exception on the manage auto group enrol page
+
 ## 5.1.0 (2026032100)
 - Tested and verified on Moodle 5.1
 - Updated supported version range to Moodle 4.5 - 5.1

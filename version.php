@@ -25,9 +25,9 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version = 2026032100;
+$plugin->version = 2026062400;
 $plugin->requires = 2024100700;
 $plugin->supported = [405, 501];
 $plugin->component = 'tool_groupautoenrol';
-$plugin->release = '5.1.0';
+$plugin->release = '5.1.1';
 $plugin->maturity = MATURITY_STABLE;
