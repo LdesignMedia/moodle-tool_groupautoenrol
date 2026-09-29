@@ -44,8 +44,6 @@ class observer {
      * @param user_enrolment_created $event
      *
      * @return bool true if all ok
-     * @throws \coding_exception
-     * @throws \dml_exception
      */
     public static function user_is_enrolled(user_enrolment_created $event): bool {
         global $CFG, $DB;
@@ -77,34 +75,36 @@ class observer {
     /**
      * Get the groups to use for the course.
      *
+     * Groups are read directly from the database on purpose. Since Moodle 4.2,
+     * groups_get_all_groups() filters groups by their membership visibility for the
+     * current user. During self enrolment the current user is the student, who is not
+     * yet a member of any group and lacks moodle/course:viewhiddengroups, so groups
+     * with restricted visibility would be hidden and the user would not be assigned.
+     *
      * @param stdClass $groupautoenrol
      * @param user_enrolment_created $event
      *
      * @return array
      */
     private static function get_course_groups(stdClass $groupautoenrol, user_enrolment_created $event): array {
+        global $DB;
+
+        $allgroupscourse = $DB->get_records('groups', ['courseid' => $event->courseid], 'id');
+
+        if (empty($groupautoenrol->use_groupslist)) {
+            // If use_groupslist == 0, use all groups of the course.
+            return $allgroupscourse;
+        }
+
+        // If use_groupslist == 1, only use the listed groups that still exist
+        // (when a group is deleted, the groupautoenrol table is not updated).
         $groupstouse = [];
-        if (!empty($groupautoenrol->use_groupslist)) {
-            // If use_groupslist == 1, we need to check.
-            // A) if the list is not empty.
-            if (!empty($groupautoenrol->groupslist)) {
-                $groupstemp = explode(",", $groupautoenrol->groupslist);
-
-                // B) if the listed groups still exists
-                // (because when a group is deleted, groupautoenrol table is not updated !).
-                $allgroupscourse = groups_get_all_groups($event->courseid);
-
-                foreach ($groupstemp as $group) {
-                    if (empty($allgroupscourse[$group])) {
-                        continue;
-                    }
-
-                    $groupstouse[] = $allgroupscourse[$group];
-                }
+        foreach (explode(',', (string) $groupautoenrol->groupslist) as $groupid) {
+            if (empty($allgroupscourse[$groupid])) {
+                continue;
             }
-        } else {
-            // If use_groupslist == 0, use all groups course.
-            $groupstouse = groups_get_all_groups($event->courseid);
+
+            $groupstouse[] = $allgroupscourse[$groupid];
         }
 
         return $groupstouse;
@@ -116,8 +116,6 @@ class observer {
      * @param stdClass $groupautoenrol
      * @param array $groupstouse
      * @param stdClass $enroldata
-     *
-     * @throws \coding_exception
      */
     private static function add_user_to_group(stdClass $groupautoenrol, array $groupstouse, stdClass $enroldata): void {
         global $DB;
