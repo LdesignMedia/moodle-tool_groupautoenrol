@@ -75,7 +75,7 @@ class observer {
     /**
      * Get the groups to use for the course.
      *
-     * Groups are read directly from the database on purpose. Since Moodle 4.2,
+     * Groups are read from the cached course group data on purpose. Since Moodle 4.2,
      * groups_get_all_groups() filters groups by their membership visibility for the
      * current user. During self enrolment the current user is the student, who is not
      * yet a member of any group and lacks moodle/course:viewhiddengroups, so groups
@@ -87,9 +87,7 @@ class observer {
      * @return array
      */
     private static function get_course_groups(stdClass $groupautoenrol, user_enrolment_created $event): array {
-        global $DB;
-
-        $allgroupscourse = $DB->get_records('groups', ['courseid' => $event->courseid], 'id');
+        $allgroupscourse = groups_get_course_data($event->courseid)->groups;
 
         if (empty($groupautoenrol->use_groupslist)) {
             // If use_groupslist == 0, use all groups of the course.

@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 
 ## 5.1.2 (2026092900)
-- Fix: self-enrolled users were not added to a group when the course groups had a restricted "Group membership visibility" (for example "Only visible to members"). Groups are now read directly, so the result no longer depends on the user performing the enrolment.
+- Fix: self-enrolled users were not added to a group when the course groups had a restricted "Group membership visibility" (for example "Only visible to members"). Groups are now read from the cached course group data, so the result no longer depends on the user performing the enrolment.
 
 ## 5.1.1 (2026062400)
 - Fix: restore `require_once($CFG->libdir/formslib.php)` in the manage form, resolving the `Class "moodleform" not found` exception on the manage auto group enrol page
