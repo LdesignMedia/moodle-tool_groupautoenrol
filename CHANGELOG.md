@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 5.3.0 (2026111100)
+- Tested and verified on Moodle 5.3
+- Updated supported version range to Moodle 4.5 - 5.3
+
 ## 5.1.2 (2026092900)
 - Fix: self-enrolled users were not added to a group when the course groups had a restricted "Group membership visibility" (for example "Only visible to members"). Groups are now read from the cached course group data, so the result no longer depends on the user performing the enrolment.
 
