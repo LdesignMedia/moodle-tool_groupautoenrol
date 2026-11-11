@@ -1,7 +1,5 @@
 ## Moodle - Tool Group Auto Enrol
 
-[![CI Status](https://github.com/LdesignMedia/moodle-tool_groupautoenrol/workflows/ci/badge.svg)](https://github.com/LdesignMedia/moodle-tool_groupautoenrol/actions/workflows/ci.yml)
-
 Automatically enrol students into course groups when they join a course. Works with all enrolment methods (manual, self-enrolment, cohort sync) and randomly assigns users to ensure balanced group distribution.
 
 ## Author
